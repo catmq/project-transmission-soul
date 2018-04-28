@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1446388629177632
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,13 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2338f7aadb1497b46bb85faf7437b787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  colliderRadius: 0.6
   personMesh: {fileID: 1446388629177632}
   lineObject: Prefab_Line_2
   deathParticle: Prefab_DeathParticle
-  distanceRangeMin: 10
-  distanceRangeMax: 20
-  lineWidthMax: 1
 --- !u!135 &135728491539009422
 SphereCollider:
   m_ObjectHideFlags: 1

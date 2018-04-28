@@ -9,8 +9,17 @@ public class PeopleManager : MonoBehaviour {
     public float PeopleRangeMin = 50.0f;
     public float PeopleRangeMax = 70.0f;
 
+    public float distanceRangeMin = 10;
+    public float distanceRangeMax = 50;
+
+    public float ScaleMax = 1.5f;
+    public float ScaleMin = 0.8f;
+
+    public float lifeRangeMin = 2.0f;
+    public float lifeRangeMax = 5.0f;
+
+    public string PersonPrefab = "Prefab_PersonObject";
     public GameObject PeopleNode;
-    public GameObject PersonPrefab;
     public GameObject PlayerObject;
 
     float currentCumulativeTime;
@@ -22,13 +31,7 @@ public class PeopleManager : MonoBehaviour {
         //generate people randomly
         for (int i=0;i<initialSpawn;i++)
         {
-            float distance = Random.Range(0, PeopleRangeMin);
-            float angle = Random.Range(0f, 2 * Mathf.PI);
-            float x = distance * Mathf.Cos(angle);
-            float z = distance * Mathf.Sin(angle);
-            Vector3 newPersonPosition = new Vector3(x, 0, z);
-            GameObject newPerson = Instantiate(PersonPrefab, PeopleNode.transform);
-            newPerson.GetComponent<PersonControl>().OnNewPersonCreated(newPersonPosition);
+            SpawnNewPerson();
         }
 	}
 	
@@ -41,13 +44,7 @@ public class PeopleManager : MonoBehaviour {
             currentCumulativeTime = 0;
             for (int i=0;i<spawnPeopleCount;i++)
             {
-                float distance = Random.Range(PeopleRangeMin, PeopleRangeMax);
-                float angle = Random.Range(0f, 2 * Mathf.PI);
-                float x = distance * Mathf.Cos(angle);
-                float z = distance * Mathf.Sin(angle);
-                Vector3 newPersonPosition = PlayerObject.transform.position + new Vector3(x, 0, z);
-                GameObject newPerson = Instantiate(PersonPrefab, PeopleNode.transform);
-                newPerson.GetComponent<PersonControl>().OnNewPersonCreated(newPersonPosition);
+                SpawnNewPerson();
             }
         }
 	}
@@ -66,5 +63,19 @@ public class PeopleManager : MonoBehaviour {
         {
             transform.GetChild(i).GetComponent<PersonControl>().OnPlayerGoingToDie(dieTime);
         }
+    }
+
+    void SpawnNewPerson()
+    {
+        float distance = Random.Range(0, PeopleRangeMin);
+        float angle = Random.Range(0f, 2 * Mathf.PI);
+        float x = distance * Mathf.Cos(angle);
+        float z = distance * Mathf.Sin(angle);
+        Vector3 newPersonPosition = new Vector3(x, 0, z);
+        GameObject newPerson = Instantiate(Resources.Load(PersonPrefab) as GameObject, PeopleNode.transform);
+        float scale = Random.Range(ScaleMin, ScaleMax);
+        float enterDistance = Random.Range(distanceRangeMin, distanceRangeMax);
+        float life = Random.Range(lifeRangeMin, lifeRangeMax);
+        newPerson.GetComponent<PersonControl>().OnNewPersonCreated(newPersonPosition,scale, enterDistance, life, PlayerObject);
     }
 }

@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4136165762195194
 Transform:
   m_ObjectHideFlags: 1
@@ -119,8 +119,8 @@ LineRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 8867
-      atime1: 56283
+      atime0: 0
+      atime1: 65535
       atime2: 56283
       atime3: 56283
       atime4: 56283

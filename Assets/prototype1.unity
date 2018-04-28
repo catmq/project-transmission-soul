@@ -147,67 +147,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &134109524
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 781704212}
-    m_Modifications:
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114163212448867742, guid: 3fd2ed7610c86664cbf2f0c0562d4072,
-        type: 2}
-      propertyPath: playerObject
-      value: 
-      objectReference: {fileID: 1296272726}
-    - target: {fileID: 1200788316976034, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114163212448867742, guid: 3fd2ed7610c86664cbf2f0c0562d4072,
-        type: 2}
-      propertyPath: distanceRangeMax
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114163212448867742, guid: 3fd2ed7610c86664cbf2f0c0562d4072,
-        type: 2}
-      propertyPath: distanceRangeMin
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3fd2ed7610c86664cbf2f0c0562d4072, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &172450757
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b1bb8ec0931fb4695d656a5aace4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLife: 5
+  totalLife: 80
   deathTime: 0.2
   progressBarUI: {fileID: 973742525}
   currentTimeTextUI: {fileID: 947384085}
@@ -508,8 +447,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1047570136}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -746,16 +684,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1047570135 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1200788316976034, guid: 3fd2ed7610c86664cbf2f0c0562d4072,
-    type: 2}
-  m_PrefabInternal: {fileID: 134109524}
---- !u!4 &1047570136 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4799965194046968, guid: 3fd2ed7610c86664cbf2f0c0562d4072,
-    type: 2}
-  m_PrefabInternal: {fileID: 134109524}
 --- !u!1 &1207534588
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +832,7 @@ Transform:
   m_GameObject: {fileID: 1296272726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.7}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1206,8 +1134,14 @@ MonoBehaviour:
   peopleSpawnRate: 10
   PeopleRangeMin: 50
   PeopleRangeMax: 70
+  distanceRangeMin: 10
+  distanceRangeMax: 30
+  ScaleMax: 1.5
+  ScaleMin: 0.8
+  lifeRangeMin: 2
+  lifeRangeMax: 5
+  PersonPrefab: Prefab_PersonObject
   PeopleNode: {fileID: 1544575866}
-  PersonPrefab: {fileID: 1047570135}
   PlayerObject: {fileID: 1296272726}
 --- !u!1 &1752364149
 GameObject:

@@ -4,26 +4,17 @@ using UnityEngine;
 
 public class PersonControl : MonoBehaviour {
 
-    public GameObject playerObject;
+    public float colliderRadius = 0.6f;
     public GameObject personMesh;
     public string lineObject = "Prefab_Line_2";
     public string deathParticle = "Prefab_DeathParticle";
-
-    public float colliderRadius = 0.6f;
-
-    public float distanceRangeMin = 10;
-    public float distanceRangeMax = 50;
-
-    public float ScaleMax = 1.5f;
-    public float ScaleMin = 0.8f;
-
-    public float lifeRangeMin = 2.0f;
-    public float lifeRangeMax = 5.0f;
 
     float enterDistance;
     float personLife;
     float connectionDieTime;
     float currentDieTime;
+
+    GameObject playerObject;
 
     GameObject connectionObject = null;
 
@@ -33,8 +24,6 @@ public class PersonControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        enterDistance = Random.Range(distanceRangeMin, distanceRangeMax);
-        personLife = Random.Range(lifeRangeMin, lifeRangeMax);
     }
 	
 	// Update is called once per frame
@@ -114,17 +103,20 @@ public class PersonControl : MonoBehaviour {
         //line.widthCurve = new AnimationCurve(curveKeys);
     }
 
-    public void OnNewPersonCreated(Vector3 personPosition)
+    public void OnNewPersonCreated(Vector3 personPosition, float scaleFactor_in, float enterDistance_in, float personLife_in, GameObject playerObject_in)
     {
         transform.position = personPosition;
-        Vector3 scaleFactor = Vector3.one * Random.Range(ScaleMin, ScaleMax);
-        personMesh.transform.localScale = scaleFactor;
-        Collider[] hitColliders = Physics.OverlapSphere(personPosition, colliderRadius * scaleFactor.x);
-        if (hitColliders.Length != 0)
-        {
-            noDeathParticle = true;
-            Destroy(gameObject);
-        }
+        enterDistance = enterDistance_in;
+        personLife = personLife_in;
+        playerObject = playerObject_in;
+        Vector3 scaleVector = Vector3.one * scaleFactor_in;
+        personMesh.transform.localScale = scaleVector;
+        Collider[] hitColliders = Physics.OverlapSphere(personPosition, colliderRadius * scaleFactor_in);
+        //if (hitColliders.Length != 0)
+        //{
+        //    noDeathParticle = true;
+        //    Destroy(gameObject);
+        //}
         personMesh.transform.Rotate(Vector3.up, Random.Range(0, 360));
         gameObject.SetActive(true);
 
